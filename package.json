@@ -1,0 +1,26 @@
+{
+  "name": "web-review",
+  "version": "0.1.0",
+  "description": "A npm package to check the responsiveness of your website and audit it's performance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savannahar68/web-review.git"
+  },
+  "keywords": [
+    "npm",
+    "audit",
+    "performance",
+    "responsiveness",
+    "phantomjs"
+  ],
+  "author": "SDS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/savannahar68/web-review/issues"
+  },
+  "homepage": "https://github.com/savannahar68/web-review#readme"
+}
