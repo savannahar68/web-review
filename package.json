@@ -5,8 +5,8 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "node src/test.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/savannahar68/web-review#readme",
   "dependencies": {
-    "pageres": "^5.2.0"
+    "pageres": "^5.2.0",
+    "path": "^0.12.7"
   }
 }
