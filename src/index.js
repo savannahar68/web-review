@@ -53,7 +53,7 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
     chromeFlags: ["--show-paint-rects"],
   };
   if (categories.length) opts["onlyCategories"] = categories;
-  console.log(opts);
+  // console.log(opts);
   launchChromeAndRunLighthouse(url, opts).then((results) => {
     const html = ReportGenerator.generateReport(results, "html");
     var filename = new URL(url).hostname;
