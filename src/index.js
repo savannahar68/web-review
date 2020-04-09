@@ -59,7 +59,7 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
   //TODO : Best Practices Option yet to add
   //some more config options - from documentation of lighthouse
   const opts = {
-    chromeFlags: ["--show-paint-rects"],
+    chromeFlags: ["--show-paint-rects","--headless"],
   };
   if (categories.length) opts["onlyCategories"] = categories;
   // console.log(opts);
