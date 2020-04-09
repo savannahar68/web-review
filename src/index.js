@@ -14,7 +14,16 @@ const launchChromeAndRunLighthouse = (url, opts, config = null) => {
       });
     });
 };
-
+/**
+ * @param {String} url (Website's URL to check for responsiveness)
+ * @param {list} resolution (Resolution in which to take the screenshots)
+ * @categories [
+    "480x320",
+    "1024x768",
+    "iphone 7 plus",
+    "1280x1024",
+    "1920x1080"]
+ */
 module.exports.ss = (
   url = "https://github.com",
   resolution = [
