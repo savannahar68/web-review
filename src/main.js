@@ -39,10 +39,11 @@ module.exports.ss = (
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (async () => {
     console.log("called");
-    await new Pageres({ delay: 2 })
-      .src(url, resolution)
-      .dest(Path.join(__dirname, "screenshots"))
-      .run();
+    var dir = "./screenshots";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+    await new Pageres({ delay: 2 }).src(url, resolution).dest(dir).run();
 
     console.log("Finished generating screenshots!");
     return true;
@@ -59,7 +60,7 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
   //TODO : Best Practices Option yet to add
   //some more config options - from documentation of lighthouse
   const opts = {
-    chromeFlags: ["--show-paint-rects","--headless"],
+    chromeFlags: ["--show-paint-rects", "--headless"],
   };
   if (categories.length) opts["onlyCategories"] = categories;
   // console.log(opts);
