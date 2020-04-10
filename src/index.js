@@ -43,14 +43,14 @@ module.exports.ss = (
 /**
  * @param {String} url (to audit)
  * @param {list} categories (categories required,outputs all if empty)
- * @categories ['performance','accessibility','seo','pwa']
+ * @augments ['performance','accessibility','seo','pwa'] (for categories)
  */
 
 module.exports.lh = (url = "https://github.com", categories = []) => {
   //TODO : Best Practices Option yet to add
   //some more config options - from documentation of lighthouse
   const opts = {
-    chromeFlags: ["--show-paint-rects","--headless"],
+    chromeFlags: ["--headless"],
   };
   if (categories.length) opts["onlyCategories"] = categories;
   // console.log(opts);
