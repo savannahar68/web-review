@@ -2,8 +2,8 @@
   "name": "web-review",
   "version": "0.1.0",
   "description": "A npm package to check the responsiveness of your website and audit it's performance",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "src/index.js",
+  "bin": "src/index.js",
   "scripts": {
     "test": "node src/test.js",
     "start": "node src/index.js"
