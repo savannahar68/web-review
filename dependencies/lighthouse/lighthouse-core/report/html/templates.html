@@ -952,3 +952,38 @@ limitations under the License.
     </div>
   </template>
 
+<!-- Lighthouse screenshots display component -->
+<template id="tmpl-lh-ss">
+  <div id="ss-container">
+    <span id="ss-container-title"></span>
+  </div>
+</template>
+
+<template class="ss-lg-indi">
+  <style>
+    .indi-ss {
+      color: black;
+      margin: 15px 15px 5px 5px;
+    }
+    .indi-ss-title {
+      font-size: 40px;
+    }
+    .indi-image-only {
+      /*
+      height: 450px;
+      overflow: scroll;
+      */
+      border: 2px black solid;
+    }
+    .indi-img {
+      max-width: 100%;
+      display: block;
+    }
+  </style>
+  <div class="indi-ss">
+    <span class="indi-ss-title"><a class="indi-ss-title-link" target="_blank"></a></span>
+    <div class="indi-image-only">
+      <img class="indi-img"/>
+    </div>
+  </div>
+</template>

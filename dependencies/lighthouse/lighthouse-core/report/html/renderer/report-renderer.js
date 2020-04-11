@@ -47,8 +47,29 @@ class ReportRenderer {
   renderReport(result, container) {
     this._dom.setLighthouseChannel(result.configSettings.channel || 'unknown');
 
-    const report = Util.prepareReportResult(result);
+    result.categories["screenshots"] = {
+        "title": "Screenshots",
+        "description": "These show the screenshots of the page in various dimensions.",
+        "manualDescription": "Show the display of the page under various dimensions.",
+        "auditRefs": [
+        ],
+        "images": [
+          {
+            "title": "Title 1",
+            "src": "../../../../../../edited_docs/large.png",
+          },
+          {
+            "title": "Title 2",
+            "src": "large.png"
+          }
+        ],
+        "id": "screenshots",
+        "score": 0.5
+      };
 
+    const report = Util.prepareReportResult(result);
+    //console.log(report);
+    const cat = report.categories;
     container.textContent = ''; // Remove previous report.
     container.appendChild(this._renderReport(report));
 
@@ -200,6 +221,7 @@ class ReportRenderer {
     const specificCategoryRenderers = {
       performance: new PerformanceCategoryRenderer(this._dom, detailsRenderer),
       pwa: new PwaCategoryRenderer(this._dom, detailsRenderer),
+      screenshots: new ScreenshotsCategoryRenderer(this._dom, detailsRenderer),
     };
     Object.values(specificCategoryRenderers).forEach(renderer => {
       renderer.setTemplateContext(this._templateContext);

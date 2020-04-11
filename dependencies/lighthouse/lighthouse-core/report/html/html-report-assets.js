@@ -23,6 +23,7 @@ const REPORT_JAVASCRIPT = [
   fs.readFileSync(__dirname + '/renderer/category-renderer.js', 'utf8'),
   fs.readFileSync(__dirname + '/renderer/performance-category-renderer.js', 'utf8'),
   fs.readFileSync(__dirname + '/renderer/pwa-category-renderer.js', 'utf8'),
+  fs.readFileSync(__dirname + '/renderer/screenshots-category-renderer.js', 'utf8'),
   fs.readFileSync(__dirname + '/renderer/report-renderer.js', 'utf8'),
   fs.readFileSync(__dirname + '/renderer/i18n.js', 'utf8'),
 ].join(';\n');
