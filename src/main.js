@@ -4,6 +4,21 @@ const fs = require("fs");
 const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
 const ReportGenerator = require("lighthouse/lighthouse-core/report/report-generator");
+var auditState = {
+  urlInternal: -1,
+  urlListener: function (val) {},
+  set url(val) {
+    this.urlInternal = val;
+    this.urlListener(val);
+  },
+  get url() {
+    return this.urlInternal;
+  },
+  registerListener: function (listener) {
+    this.urlListener = listener;
+  },
+};
+
 const launchChromeAndRunLighthouse = (url, opts, config = null) => {
   return chromeLauncher
     .launch({ chromeFlags: opts.chromeFlags })
@@ -38,14 +53,13 @@ module.exports.ss = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (async () => {
-    console.log("called");
-    var dir = "./screenshots";
+    var dir = "./" + new URL(url).hostname + "/screenshots";
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
     await new Pageres({ delay: 2 }).src(url, resolution).dest(dir).run();
 
-    console.log("Finished generating screenshots!");
+    console.log("Finished generating screenshots for " + String(url));
     return true;
   })();
 };
@@ -68,7 +82,7 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
     const html = ReportGenerator.generateReport(results, "html");
     var filename = new URL(url).hostname;
     filename += ".html";
-    var dir = "./reports";
+    var dir = "./" + new URL(url).hostname + "/reports";
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
@@ -76,6 +90,10 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
       if (err) {
         return console.log(err);
       }
+      console.log("Finished Generating Audit Report for " + url);
+      auditState.url += 1;
     });
   });
 };
+
+module.exports.auditState = auditState;
