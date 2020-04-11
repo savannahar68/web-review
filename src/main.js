@@ -53,14 +53,13 @@ module.exports.ss = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (async () => {
-    console.log("called");
     var dir = "./" + new URL(url).hostname + "/screenshots";
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
     await new Pageres({ delay: 2 }).src(url, resolution).dest(dir).run();
 
-    console.log("Finished generating screenshots!" + String(url));
+    console.log("Finished generating screenshots for " + String(url));
     return true;
   })();
 };
