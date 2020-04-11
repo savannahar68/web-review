@@ -24,6 +24,7 @@ module.exports.exec = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (() => {
+    console.log("Running...")
     var auditState = webReview.auditState;
     auditState.registerListener(() => {
       if (auditState.url === -1) return;
@@ -48,6 +49,7 @@ module.exports.exec = (
     //begin auditing
     if (auditState.url === -1) auditState.url = 0;
 
+    console.log("Done!")
     return true;
   })();
 };
