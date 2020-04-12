@@ -53,9 +53,15 @@ module.exports.ss = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (async () => {
-    var dir = "./" + new URL(url).hostname + "/screenshots";
+    var urlObj = new URL(url);
+    const hostname = urlObj.hostname;
+    const path = urlObj.pathname
+    var dir = "./"
+    if(hostname && hostname != "") dir = dir + hostname;
+    if(path && path != "") dir = dir + "/" + path;
+    dir = dir + "/screenshots"
     if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
+      fs.mkdirSync(dir,{recursive:true});
     }
     await new Pageres({ delay: 2 }).src(url, resolution).dest(dir).run();
 
@@ -80,11 +86,18 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
   // console.log(opts);
   launchChromeAndRunLighthouse(url, opts).then((results) => {
     const html = ReportGenerator.generateReport(results, "html");
-    var filename = new URL(url).hostname;
+    var urlObj = new URL(url);
+    const hostname = urlObj.hostname
+    const path = urlObj.pathname
+    var dir = "./"
+    var filename =  ""
+    if(hostname && hostname != "") {dir = dir + hostname; filename = filename + hostname}
+    if(path && path!="") {dir = dir + "/" + path; filename = filename + "." + path}
+    dir = dir+"/reports"
     filename += ".html";
-    var dir = "./" + new URL(url).hostname + "/reports";
+    filename = filename.replace(/\//g,'')
     if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
+      fs.mkdirSync(dir,{recursive:true});
     }
     fs.writeFile(Path.join(dir, filename), html, function (err) {
       if (err) {
@@ -93,6 +106,9 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
       console.log("Finished Generating Audit Report for " + url);
       auditState.url += 1;
     });
+  }).catch((err) => {
+    console.log("Unable to launch chrome and run lighthouse for url",url)
+    console.log(err);
   });
 };
 
