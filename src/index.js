@@ -20,9 +20,6 @@ module.exports.exec = (
     },
   ]
 ) => {
-  //right now URL is just string
-  //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
-  // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (() => {
     console.log("Running...")
     var auditState = webReview.auditState;
@@ -32,19 +29,26 @@ module.exports.exec = (
         auditState.url = -1;
         return;
       }
-      webReview.lh(
-        urlList[auditState.url].url,
-        urlList[auditState.url].category
-      );
+      urlList[auditState.url].url.forEach(url => {
+        webReview.lh(
+          url,
+          urlList[auditState.url].category
+        );
+      });
     });
 
     for (const key in urlList) {
       const urlObj = urlList[key];
-      var dir = new URL(urlObj.url).hostname;
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
-      }
-      webReview.ss(urlObj.url, urlObj.resolution);
+      urlObj.url.forEach(url =>{
+        var urlNewObj = new URL(url);
+        var dir = urlNewObj.hostname + "/" + urlNewObj.pathname;
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir,{recursive:true},(err) => {
+            if(err) throw new err;
+          });
+        }
+        webReview.ss(url, urlObj.resolution);
+      });
     }
     //begin auditing
     if (auditState.url === -1) auditState.url = 0;

@@ -1,7 +1,7 @@
 const webReview = require("./src/index");
 webReview.exec([
   {
-    url: "https://www.github.com/",
+    url: ["https://www.github.com/marketplace"],
     resolution: [
       "480x320",
       "1024x768",
@@ -11,7 +11,7 @@ webReview.exec([
     ],
   },
   {
-    url: "https://www.google.com",
+    url: ["https://www.google.com"],
     resolution: [
       "480x320",
       "1024x768",
