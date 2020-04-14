@@ -9,37 +9,34 @@ module.exports.exec = (
     {
       url: "https://github.com",
       resolution: [
-        "480x320", 
-        "1024x768", 
+        "480x320",
+        "1024x768",
         "iphone 5s",
         "iphone 7 plus",
         "1024x768",
-        "1280x1024"
+        "1280x1024",
       ],
       category: ["accessibility", "performance"],
       config: {
-	      "categories": {
-		      "screenshots": {
-				"title": "Screenshots",
-				"description": "These show the screenshots of the page in various dimensions.",
-				"manualDescription": "Show the display of the page under various dimensions.",
-				"auditRefs": [
-				],
-				"images": [
-				  {
-				    "title": "Title 1",
-				    "src": "../../../../../../edited_docs/large.png",
-				  },
-				  {
-				    "title": "Title 2",
-				    "src": "../screenshots/facebook.com-1024x768.png"
-				  }
-				],
-				"id": "screenshots",
-				"score": 0.5
-		      }
-	      }
-      }
+        categories: {
+          screenshots: {
+            title: "Screenshots",
+            description:
+              "These show the screenshots of the page in various dimensions.",
+            manualDescription:
+              "Show the display of the page under various dimensions.",
+            auditRefs: [],
+            images: [
+              {
+                title: "1024x768",
+                src: "../screenshots/1024x768.png",
+              },
+            ],
+            id: "screenshots",
+            score: 0.5,
+          },
+        },
+      },
     },
   ]
 ) => {
@@ -47,7 +44,7 @@ module.exports.exec = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (() => {
-    console.log("Running...")
+    console.log("Running...");
     var auditState = webReview.auditState;
     auditState.registerListener(() => {
       if (auditState.url === -1) return;
@@ -59,7 +56,7 @@ module.exports.exec = (
       webReview.lh(
         urlList[auditState.url].url,
         urlList[auditState.url].category,
-	urlList[auditState.url].config
+        urlList[auditState.url].config
       );
     });
 
@@ -74,7 +71,7 @@ module.exports.exec = (
     //begin auditing
     if (auditState.url === -1) auditState.url = 0;
 
-    console.log("Done!")
+    console.log("Done!");
     return true;
   })();
 };
