@@ -15,11 +15,11 @@ webReview.exec([
           auditRefs: [],
           images: [
             {
-              title: "Title 1",
-              src: "../../../../../../edited_docs/large.png",
+              title: "480x320",
+              src: "../screenshots/480x320.png",
             },
             {
-              title: "Title 2",
+              title: "1024x768",
               src: "../screenshots/1024x768.png",
             },
           ],
@@ -44,11 +44,11 @@ webReview.exec([
           auditRefs: [],
           images: [
             {
-              title: "Title 1",
-              src: "../../../../../../edited_docs/large.png",
+              title: "480x320",
+              src: "../screenshots/480x320.png",
             },
             {
-              title: "Title 2",
+              title: "1024x768",
               src: "../screenshots/1024x768.png",
             },
           ],

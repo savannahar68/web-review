@@ -4,6 +4,27 @@ const fs = require("fs");
 // webReview.lh("https://www.google.com/", ["accessibility", "performance"]);
 // webReview.lh("https://www.google.com/");
 
+var config = {
+  categories: {
+    screenshots: {
+      title: "Screenshots",
+      description:
+        "These show the screenshots of the page in various dimensions.",
+      manualDescription:
+        "Show the display of the page under various dimensions.",
+      auditRefs: [],
+      images: [
+        {
+          title: "1024x768",
+          src: "../screenshots/1024x768.png",
+        },
+      ],
+      id: "screenshots",
+      score: 0.5,
+    },
+  },
+};
+
 module.exports.exec = (
   urlList = [
     {
@@ -16,7 +37,6 @@ module.exports.exec = (
         "1024x768",
         "1280x1024",
       ],
-      category: ["accessibility", "performance"],
       config: {
         categories: {
           screenshots: {
@@ -43,6 +63,18 @@ module.exports.exec = (
   //right now URL is just string
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
+
+  // urlList.forEach((urlObject) => {
+  //   imageList = [];
+  //   urlObject.config = config;
+  //   console.log(urlObject);
+  //   urlObject["resolution"].forEach((res) => {
+  //     imageList.push({ title: res, src: "../screenshots/" + res + ".png" });
+  //   });
+  //   urlObject.config.categories.images = imageList;
+  // });
+
+  console.log(urlList);
   return (() => {
     console.log("Running...");
     var auditState = webReview.auditState;
