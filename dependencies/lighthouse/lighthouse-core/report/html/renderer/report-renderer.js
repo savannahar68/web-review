@@ -47,6 +47,7 @@ class ReportRenderer {
   renderReport(result, container) {
     this._dom.setLighthouseChannel(result.configSettings.channel || 'unknown');
 
+	  /*
     result.categories["screenshots"] = {
         "title": "Screenshots",
         "description": "These show the screenshots of the page in various dimensions.",
@@ -66,6 +67,7 @@ class ReportRenderer {
         "id": "screenshots",
         "score": 0.5
       };
+      */
 
     const report = Util.prepareReportResult(result);
     //console.log(report);

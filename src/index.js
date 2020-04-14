@@ -17,6 +17,29 @@ module.exports.exec = (
         "1280x1024"
       ],
       category: ["accessibility", "performance"],
+      config: {
+	      "categories": {
+		      "screenshots": {
+				"title": "Screenshots",
+				"description": "These show the screenshots of the page in various dimensions.",
+				"manualDescription": "Show the display of the page under various dimensions.",
+				"auditRefs": [
+				],
+				"images": [
+				  {
+				    "title": "Title 1",
+				    "src": "../../../../../../edited_docs/large.png",
+				  },
+				  {
+				    "title": "Title 2",
+				    "src": "../screenshots/facebook.com-1024x768.png"
+				  }
+				],
+				"id": "screenshots",
+				"score": 0.5
+		      }
+	      }
+      }
     },
   ]
 ) => {
@@ -32,9 +55,11 @@ module.exports.exec = (
         auditState.url = -1;
         return;
       }
+      //console.log(urlList[auditState.url].config);
       webReview.lh(
         urlList[auditState.url].url,
-        urlList[auditState.url].category
+        urlList[auditState.url].category,
+	urlList[auditState.url].config
       );
     });
 

@@ -22,6 +22,8 @@ var auditState = {
 };
 
 const launchChromeAndRunLighthouse = (url, opts, config = null) => {
+  //console.log("Main Running...");
+  //console.log(config);
   return chromeLauncher
     .launch({ chromeFlags: opts.chromeFlags })
     .then((chrome) => {
@@ -59,7 +61,7 @@ module.exports.ss = (
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
-    await new Pageres({ delay: 2 }).src(url, resolution).dest(dir).run();
+    await new Pageres({ delay: 2, filename: "<%= size %>" }).src(url, resolution).dest(dir).run();
 
     console.log("Finished generating screenshots for " + String(url));
     return true;
@@ -72,7 +74,7 @@ module.exports.ss = (
  * @categories ['performance','accessibility','seo','pwa']
  */
 
-module.exports.lh = (url = "https://github.com", categories = []) => {
+module.exports.lh = (url = "https://github.com", categories = [], config = null) => {
   //TODO : Best Practices Option yet to add
   //some more config options - from documentation of lighthouse
   const opts = {
@@ -80,7 +82,7 @@ module.exports.lh = (url = "https://github.com", categories = []) => {
   };
   if (categories.length) opts["onlyCategories"] = categories;
   // console.log(opts);
-  launchChromeAndRunLighthouse(url, opts).then((results) => {
+  launchChromeAndRunLighthouse(url, opts, config).then((results) => {
     const html = ReportGenerator.generateReport(results, "html");
     var filename = new URL(url).hostname;
     filename += ".html";
