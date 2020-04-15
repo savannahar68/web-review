@@ -5,6 +5,7 @@ const fs = require("fs");
 // webReview.lh("https://www.google.com/");
 
 var config = {
+  extends: "lighthouse:default",
   categories: {
     screenshots: {
       title: "Screenshots",
@@ -64,17 +65,17 @@ module.exports.exec = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
 
-  // urlList.forEach((urlObject) => {
-  //   imageList = [];
-  //   urlObject.config = config;
-  //   console.log(urlObject);
-  //   urlObject["resolution"].forEach((res) => {
-  //     imageList.push({ title: res, src: "../screenshots/" + res + ".png" });
-  //   });
-  //   urlObject.config.categories.images = imageList;
-  // });
+  urlList.forEach((urlObject) => {
+    imageList = [];
+    urlObject.config = config;
+    console.log(urlObject);
+    urlObject["resolution"].forEach((res) => {
+      imageList.push({ title: res, src: "../screenshots/" + res + ".png" });
+    });
+    urlObject.config.categories.screenshots.images = imageList;
+  });
 
-  console.log(urlList);
+  // console.log(JSON.stringify(urlList));
   return (() => {
     console.log("Running...");
     var auditState = webReview.auditState;
