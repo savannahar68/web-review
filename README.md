@@ -12,7 +12,7 @@ A npm package to check the responsiveness of your website and audit it's perform
 - Try out the package like this :
 
 ```
-const webReview = require("./index");
+const webReview = require("web-review");
 webReview.exec([
   {
     url: "https://www.facebook.com/",
