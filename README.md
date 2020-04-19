@@ -1,6 +1,6 @@
 # web-review
 
-A npm package to check the responsiveness of your website and audit it's performance
+A npm package to check the responsiveness of your website and audit it's performance, by using lighthouse under the hood
 
 ### How to run this package locally
 
