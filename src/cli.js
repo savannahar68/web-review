@@ -1,12 +1,10 @@
-#!/usr/bin/env node
-
-var review = require('..')
+var review = require('./index')
 var optimist = require('optimist')
 
 var argv = optimist
     .usage(
-        'Host review\nUsage: $0 [options]\n\n' +
-        'Examples: review --sites=\'{"google":"http://google.com"}\' --cache=100')
+        'Host web-review\nUsage: $0 [options]\n\n' +
+        'Examples: web-review --sites=\'{"google":"http://google.com"}\'')
     .demand(['sites'])
 
     .describe('port', 'Port to listen on')
@@ -22,20 +20,7 @@ var argv = optimist
 
     .describe('resolutions', 'Resolutions as JSON Array of strings')
     .alias('r', 'resolutions')
-    .default('resolutions', '["1200x800"]')
-
-    .describe('wait', 'Time to give the page to finish loading, in milliseconds')
-    .default('wait', 0)
-    .alias('w', 'wait')
-
-    .describe('cache', 'Cache snapshots for x milliseconds')
-    .default('cache', false)
-    .alias('c', 'cache')
-
-    .describe('cookie', 'Add a cookie to PhatomJS')
-
-    .describe('cut', 'Cut snapshots to exact screen size')
-    .default('cut', false)
+    .default('resolutions', '["480x320","1024x768","iphone 5s","iphone 7 plus","1024x768","1280x1024"]')
 
     .describe('help', 'Print usage instructions')
     .alias('h', 'help')
@@ -43,29 +28,11 @@ var argv = optimist
 
 if (argv.help || !argv.sites) return optimist.showHelp()
 
-var server = review()
-
-server.title(argv.title)
-server.sites(JSON.parse(argv.sites))
-server.resolutions(JSON.parse(argv.resolutions))
-server.wait(argv.wait)
-server.cut(argv.cut)
-
-if (argv.cache) {
-    server.cache({
-        dir: __dirname + '/cache',
-        expires: argv.cache
-    })
-} else {
-    server.cache(false)
-}
-
-var cookies = argv.cookies || []
-if (!Array.isArray(cookies)) cookies = [cookies]
-cookies.forEach(function (cookie) {
-    server.cookie(JSON.parse(cookie))
+const parms = []
+Object.keys(argv.sites).forEach(key => {
+    let value = argv.sites[key];
+    let websiteObject = { url: value, resolution: argv.resolution };
+    parms.push(websiteObject);
 });
 
-server.listen(argv.port, function () {
-    console.log('-> Review on port ' + argv.port)
-})
+review.exec(parms);
