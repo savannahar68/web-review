@@ -1,8 +1,24 @@
 # web-review
 
-A npm package to check the responsiveness of your website and audit it's performance, by using [lighthouse](https://developers.google.com/web/tools/lighthouse) under the hood
+It is extremely important from the developer's point of view that your website is responsive and follows good practices. That's why we have developed web-review an npm package which will compile reports consisting of : 
 
-### How to run this package locally
+* Performace of website
+* Responsiveness (Screenshots)
+* SEO capability
+* Accessibility
+* Best Practices
+* Progressive web app support
+
+
+And serve it to you in PDF and HTML format. All this is done by using [lighthouse](https://developers.google.com/web/tools/lighthouse) under the hood.
+
+### Install this package
+
+```
+npm install --save web-review
+```
+
+### or Run this package locally
 
 - Clone the project on your machine
 - From your command line execute - `npm link` - this will add this package to global npm repo on your machine(/usr/local/bin)
@@ -25,13 +41,12 @@ $ web-review --usage
 Host web-review
 Usage: web-review [options]
 
-Examples: web-review --sites='{"google":"http://google.com"}'
+Examples: web-review --sites='{"google":"http://google.com"} --resolutions='["1280x1024", "1900x1600", "800x600"]'
 
 Options:
   --title, -t        Title of the review                                       [default: "Review"]
   --sites, -s        Sites as JSON Object of strings                           [required]
   --resolutions, -r  Resolutions as JSON Array of strings                      [default: "[\"1200x800\"]"]
-  --cut              Cut snapshots to exact screen size                        [default: false]
   --help, -h         Print usage instructions
 
 ```
@@ -52,13 +67,13 @@ webReview.exec([
 ]);
 
 ```
+List of resolution sizes can be from this list [sizes](https://github.com/kevva/viewport-list/blob/master/data.json)
+
 ## Contibutors
 
 * [Savan Nahar](https://github.com/savannahar68/)
 * [Pranav Joglekar](https://github.com/Pranav2612000)
 * [Vasu Sharma](https://github.com/vasusharma7)
-* [Yash Shah](https://github.com/yashshah1)
-* [Prasad Rathod](https://github.com/prasadrathod)
 
 
-Feel free to raise issue if you find one!
+Feel free to raise issue if you find one! Contributions are always welcomed :)
