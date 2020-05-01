@@ -1,8 +1,5 @@
 const webReview = require("./main");
 const fs = require("fs");
-// webReview.ss('https://www.google.com/');
-// webReview.lh("https://www.google.com/", ["accessibility", "performance"]);
-// webReview.lh("https://www.google.com/");
 
 var config = {
   extends: "lighthouse:default",
@@ -76,7 +73,6 @@ module.exports.exec = (
 
   // console.log(JSON.stringify(urlList));
   return (() => {
-    object
     console.log("Running...");
     var auditState = webReview.auditState;
     auditState.registerListener(() => {

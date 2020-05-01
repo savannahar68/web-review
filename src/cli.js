@@ -1,5 +1,5 @@
-var review = require('./index')
-var optimist = require('optimist')
+const review = require("./index");
+var optimist = require('optimist');
 
 var argv = optimist
     .usage(
@@ -29,9 +29,18 @@ var argv = optimist
 if (argv.help || !argv.sites) return optimist.showHelp()
 
 const parms = []
+try {
+    argv.sites = JSON.parse(argv.sites);
+} catch (err) {
+}
+try {
+    argv.resolutions = JSON.parse(argv.resolutions);
+} catch (err) {
+    argv.resolutions = ["480x320", "1024x768", "iphone 5s", "iphone 7 plus", "1024x768", "1280x1024"];
+}
 Object.keys(argv.sites).forEach(key => {
     let value = argv.sites[key];
-    let websiteObject = { url: value, resolution: argv.resolution };
+    let websiteObject = { url: value, resolution: argv.resolutions };
     parms.push(websiteObject);
 });
 
