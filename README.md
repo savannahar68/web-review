@@ -10,7 +10,7 @@ It is extremely important from the developer's point of view that your website i
 * Progressive web app support
 
 
-And serve it to you in PDF and HTML format. All this is done by using [lighthouse](https://developers.google.com/web/tools/lighthouse) under the hood.
+And serve it to you HTML format. All this is done by using [lighthouse](https://developers.google.com/web/tools/lighthouse) under the hood.
 
 ### Install this package
 

@@ -68,7 +68,6 @@ module.exports.exec = (
   urlList.forEach((urlObject) => {
     imageList = [];
     urlObject.config = config;
-    console.log(urlObject);
     urlObject["resolution"].forEach((res) => {
       imageList.push({ title: res, src: "../screenshots/" + res + ".png" });
     });
@@ -77,6 +76,7 @@ module.exports.exec = (
 
   // console.log(JSON.stringify(urlList));
   return (() => {
+    object
     console.log("Running...");
     var auditState = webReview.auditState;
     auditState.registerListener(() => {
@@ -104,7 +104,6 @@ module.exports.exec = (
     //begin auditing
     if (auditState.url === -1) auditState.url = 0;
 
-    console.log("Done!");
     return true;
   })();
 };
