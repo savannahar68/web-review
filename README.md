@@ -41,7 +41,7 @@ $ web-review --usage
 Host web-review
 Usage: web-review [options]
 
-Examples: web-review --sites='{"google":"http://google.com"} --resolutions='["1280x1024", "1900x1600", "800x600"]'
+Examples: web-review --sites='{"google":"http://google.com"}' --resolutions='["1280x1024", "1900x1600", "800x600"]'
 
 Options:
   --title, -t        Title of the review                                       [default: "Review"]
