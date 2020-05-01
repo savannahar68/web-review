@@ -33,8 +33,7 @@ npm install --save web-review
 ```bash
 $ npm install -g web-review
 
-$ web-review --sites='{"google":"http://google.com","facebook":"http://facebook.com"}' \
-  --resolutions='["1280x1024", "1900x1600", "800x600"]'
+$ web-review --sites='{"google":"https://www.google.com","facebook":"https://www.facebook.com"}' --resolutions='["1280x1024", "1900x1600", "800x600"]'
 
 $ # and check
 $ web-review --usage
