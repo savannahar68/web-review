@@ -75,4 +75,8 @@ List of resolution sizes can be from this list [sizes](https://github.com/kevva/
 * [Vasu Sharma](https://github.com/vasusharma7)
 
 
+## License
+The code of web-review is released under the MIT License. There is no limitation for both acadmic and commercial usage.
+
+
 Feel free to raise issue if you find one! Contributions are always welcomed :)
