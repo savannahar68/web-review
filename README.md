@@ -33,14 +33,14 @@ npm install --save web-review
 ```bash
 $ npm install -g web-review
 
-$ web-review --sites='{"google":"https://www.google.com","facebook":"https://www.facebook.com"}' --resolutions='["1280x1024", "1900x1600", "800x600"]'
+$ web-review --sites='{"github":"https://www.github.com","zulip":"https://chat.zulip.org/"}' --resolutions='["1280x1024", "1900x1600", "800x600"]'
 
 $ # and check
 $ web-review --usage
 Host web-review
 Usage: web-review [options]
 
-Examples: web-review --sites='{"google":"http://google.com"}' --resolutions='["1280x1024", "1900x1600", "800x600"]'
+Examples: web-review --sites='{"github":"http://ww.github.com"}' --resolutions='["1280x1024", "1900x1600", "800x600"]'
 
 Options:
   --title, -t        Title of the review                                       [default: "Review"]
@@ -56,7 +56,7 @@ or create a review programmatically:
 const webReview = require("web-review");
 webReview.exec([
   {
-    url: "https://www.facebook.com/",
+    url: "https://chat.zulip.org/",
     resolution: ["480x320", "1024x768", "1024x768", "1280x1024"],
   },
   {
