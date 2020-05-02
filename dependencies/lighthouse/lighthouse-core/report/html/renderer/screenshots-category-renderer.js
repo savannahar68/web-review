@@ -87,8 +87,8 @@ class ScreenshotsCategoryRenderer extends CategoryRenderer {
       return super.renderScoreGauge(category, groupDefinitions);
     }
 
-    const tmpl = this.dom.cloneTemplate('#tmpl-lh-gauge--pwa', this.templateContext);
-    const wrapper = /** @type {HTMLAnchorElement} */ (this.dom.find('.lh-gauge--pwa__wrapper',
+    const tmpl = this.dom.cloneTemplate('#tmpl-lh-gauge--ss', this.templateContext);
+    const wrapper = /** @type {HTMLAnchorElement} */ (this.dom.find('.lh-gauge--ss__wrapper',
       tmpl));
     wrapper.href = `#${category.id}`;
 
