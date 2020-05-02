@@ -5,12 +5,8 @@ var optimist = require('optimist');
 var argv = optimist
     .usage(
         'Host web-review\nUsage: $0 [options]\n\n' +
-        'Examples: web-review --sites=\'{"google":"http://google.com"}\'')
+        'Examples: web-review --sites=\'{"github":"http://www.github.com"}\'')
     .demand(['sites'])
-
-    .describe('port', 'Port to listen on')
-    .default('port', 4000)
-    .alias('p', 'port')
 
     .describe('title', 'Title of the review')
     .default('title', 'Review')

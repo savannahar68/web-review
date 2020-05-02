@@ -15,7 +15,7 @@ And serve it to you HTML format. All this is done by using [lighthouse](https://
 ### Install this package
 
 ```
-npm install --save web-review
+npm install web-review -g
 ```
 
 ### or Run this package locally
