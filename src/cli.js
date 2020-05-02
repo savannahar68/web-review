@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const review = require("./index");
 var optimist = require('optimist');
 
