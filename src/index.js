@@ -92,8 +92,11 @@ module.exports.exec = (
     for (const key in urlList) {
       const urlObj = urlList[key];
       var dir = new URL(urlObj.url).hostname;
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
+      if(!fs.existsSync('./results')) {
+              fs.mkdirSync('./results');
+      }
+      if (!fs.existsSync('./results/' + dir.toString())) {
+        fs.mkdirSync('./results/' + dir.toString());
       }
       webReview.ss(urlObj.url, urlObj.resolution);
     }

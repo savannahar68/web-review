@@ -57,7 +57,7 @@ module.exports.ss = (
   //TODO : Check the type of URL, if string then below code, if list i.e multiple URLs then handle that
   // Resolution will be a list of list in that case or Better have a dictionary and iterate over that
   return (async () => {
-    var dir = "./" + new URL(url).hostname + "/screenshots";
+    var dir = "./results/" + new URL(url).hostname + "/screenshots";
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
@@ -93,7 +93,7 @@ module.exports.lh = (
     const html = ReportGenerator.generateReport(results, "html");
     var filename = new URL(url).hostname;
     filename += ".html";
-    var dir = "./" + new URL(url).hostname + "/reports";
+    var dir = "./results/" + new URL(url).hostname + "/reports";
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
