@@ -22,8 +22,6 @@ var auditState = {
 };
 
 const launchChromeAndRunLighthouse = (url, opts, config = null) => {
-  //console.log("Main Running...");
-  //console.log(config);
   return chromeLauncher
     .launch({ chromeFlags: opts.chromeFlags })
     .then((chrome) => {
