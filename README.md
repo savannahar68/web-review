@@ -68,7 +68,7 @@ webReview.exec([
 ```
 List of resolution sizes can be from this list [sizes](https://github.com/kevva/viewport-list/blob/master/data.json)
 
-## Contibutors
+## Contributors
 
 * [Savan Nahar](https://github.com/savannahar68/)
 * [Pranav Joglekar](https://github.com/Pranav2612000)
