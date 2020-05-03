@@ -1,6 +1,6 @@
 {
   "name": "@sdscoep/web-review",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "A npm package to check the responsiveness of your website and audit it's performance",
   "main": "src/index.js",
   "bin": {
