@@ -1,11 +1,10 @@
 const Pageres = require("pageres");
 const Path = require("path");
 const fs = require("fs");
-//const lighthouse = require("lighthouse");
-const lighthouse = require("../dependencies/lighthouse/lighthouse-core/index");
+const lighthouse = require("lighthouse/lighthouse-core/index");
 const chromeLauncher = require("chrome-launcher");
-const ReportGenerator = require("../dependencies/lighthouse/lighthouse-core/report/report-generator");
-//const ReportGenerator = require("/report/report-generator");
+const ReportGenerator = require("lighthouse/lighthouse-core/report/report-generator");
+
 var auditState = {
   urlInternal: -1,
   urlListener: function (val) {},
